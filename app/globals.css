@@ -37,7 +37,7 @@ img { display: block; max-width: 100%; }
 /* ---------- header ---------- */
 .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(14, 14, 15, 0.72); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255, 255, 255, 0.07); }
 .header-inner { padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-.logo { height: 38px; width: auto; }
+.logo { height: 52px; width: auto; }
 .nav { display: flex; align-items: center; gap: 30px; font-size: 14px; font-weight: 600; letter-spacing: 0.01em; }
 .nav a { transition: color 0.2s; }
 .nav a:hover { color: var(--accent); }
@@ -157,7 +157,7 @@ textarea.field { resize: vertical; }
 /* ---------- footer ---------- */
 .footer { background: var(--panel2); border-top: 1px solid var(--border); padding: 64px 28px 32px; }
 .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
-.footer-logo { height: 42px; margin-bottom: 20px; }
+.footer-logo { height: 60px; margin-bottom: 20px; }
 .footer h4 { font-weight: 800; font-size: 15px; margin-bottom: 8px; }
 .footer .addr { font-size: 14px; line-height: 1.7; color: rgba(244, 243, 238, 0.6); }
 .footer .addr a:hover { color: var(--accent); }
