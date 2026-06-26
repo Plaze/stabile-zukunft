@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#0E0E0F;color:#F4F3EE;font-family:'Archivo',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:#F1E10F;color:#0E0E0F}
+a{color:inherit;text-decoration:none}
+input,select,textarea{font-family:'Archivo',sans-serif}
+input::placeholder,textarea::placeholder{color:rgba(244,243,238,.32)}
+@keyframes szpulse{0%,100%{opacity:.5}50%{opacity:1}}
+.sz-link:hover{color:#F1E10F!important}
+.sz-mcard:hover{transform:translateY(-4px);border-color:rgba(241,225,15,.4)!important}
+.sz-tcard{transition:border-color .25s,transform .25s}
+.sz-tcard:hover{border-color:rgba(241,225,15,.35)!important}
+.sz-btn{transition:transform .18s,background .2s,color .2s}
+.sz-btn:hover{transform:translateY(-2px)}
+.sz-field:focus{outline:none;border-color:#F1E10F!important;background:rgba(255,255,255,.04)!important}
+@media(max-width:880px){
+ .sz-nav{display:none!important}
+ .sz-burger{display:flex!important}
+ .sz-hero-grid{grid-template-columns:1fr!important}
+ .sz-hero-img{display:none!important}
+ .sz-two{grid-template-columns:1fr!important}
+ .sz-h1{font-size:64px!important}
+ .sz-sec{padding:72px 24px!important}
+ .sz-forms{grid-template-columns:1fr!important}
+}
+</style>
+</helmet>
+
+<div style="position:relative;min-width:0">
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(14,14,15,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.07)">
+ <div style="max-width:1280px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+  <a href="#top" style="display:flex;align-items:center;gap:12px"><img src="public/images/logo-trim.png" alt="Stabile Zukunft" style="height:38px;width:auto;display:block"></a>
+  <nav class="sz-nav" style="display:flex;align-items:center;gap:30px;font-size:14px;font-weight:600;letter-spacing:.01em">
+   <a class="sz-link" href="#mission" style="transition:color .2s">Über Uns</a>
+   <a class="sz-link" href="#programm" style="transition:color .2s">Projekte</a>
+   <a class="sz-link" href="#mitmachen" style="transition:color .2s">Ehrenamt</a>
+   <a class="sz-link" href="#inspiration" style="transition:color .2s">Unsere Initiative</a>
+   <a class="sz-link" href="#anmelden" style="transition:color .2s">Mitglied werden</a>
+   <a class="sz-link" href="#kontakt" style="transition:color .2s">Kontakt</a>
+  </nav>
+  <div style="display:flex;align-items:center;gap:14px">
+   <a class="sz-btn" href="#kontakt" style="background:#F1E10F;color:#0E0E0F;font-weight:800;font-size:13.5px;letter-spacing:.02em;text-transform:uppercase;padding:11px 20px;border-radius:2px">Jetzt spenden</a>
+   <button class="sz-burger" onClick="{{ toggleMenu }}" style="display:none;align-items:center;justify-content:center;width:42px;height:42px;background:transparent;border:1px solid rgba(255,255,255,.18);border-radius:2px;color:#F4F3EE;font-size:18px;cursor:pointer">≡</button>
+  </div>
+ </div>
+ <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:1px solid rgba(255,255,255,.07);padding:8px 24px 18px;display:flex;flex-direction:column;gap:4px">
+   <a href="#mission" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05)">Über Uns</a>
+   <a href="#programm" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05)">Projekte</a>
+   <a href="#mitmachen" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05)">Ehrenamt</a>
+   <a href="#inspiration" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05)">Unsere Initiative</a>
+   <a href="#anmelden" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600;border-bottom:1px solid rgba(255,255,255,.05)">Mitglied werden</a>
+   <a href="#kontakt" onClick="{{ closeMenu }}" style="padding:10px 0;font-weight:600">Kontakt</a>
+  </div>
+ </sc-if>
+</header>
+
+<section id="top" style="position:relative;padding:150px 28px 90px;max-width:1280px;margin:0 auto;scroll-margin-top:80px">
+ <div style="position:absolute;top:80px;right:-10%;width:620px;height:620px;background:radial-gradient(circle,rgba(241,225,15,.13),transparent 62%);pointer-events:none;z-index:0"></div>
+ <div class="sz-hero-grid" style="position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center">
+  <div>
+   <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:26px">
+    <span style="width:30px;height:2px;background:#F1E10F"></span>
+    <span style="color:#F1E10F;font-weight:800;letter-spacing:.34em;font-size:12.5px;text-transform:uppercase">Sport. Werte. Zukunft.</span>
+   </div>
+   <h1 class="sz-h1" style="font-family:'Anton',sans-serif;font-weight:400;font-size:108px;line-height:.9;letter-spacing:.01em;text-transform:uppercase;margin-bottom:26px">Stabile<br><span style="color:#F1E10F;display:inline-block;transform:skewX(-7deg)">Zukunft</span></h1>
+   <p style="max-width:480px;font-size:18px;line-height:1.6;color:rgba(244,243,238,.72);margin-bottom:36px">Ein bundesweites Präventions- und Sportprojekt von <strong style="color:#F4F3EE;font-weight:700">Felix Blume (Kollegah)</strong>. Operative Umsetzung durch <strong style="color:#F4F3EE;font-weight:700">Intena Humanity e.V.</strong></p>
+   <div style="display:flex;flex-wrap:wrap;gap:14px">
+    <a class="sz-btn" href="#mitmachen" style="background:#F1E10F;color:#0E0E0F;font-weight:800;letter-spacing:.02em;text-transform:uppercase;font-size:14.5px;padding:16px 30px;border-radius:2px">Jetzt teilnehmen</a>
+    <a class="sz-btn" href="#mission" style="border:1px solid rgba(255,255,255,.22);color:#F4F3EE;font-weight:700;letter-spacing:.02em;text-transform:uppercase;font-size:14.5px;padding:16px 30px;border-radius:2px">Mehr erfahren</a>
+   </div>
+  </div>
+  <div class="sz-hero-img" style="position:relative">
+   <div style="position:absolute;inset:18px -18px -18px 18px;background:#F1E10F;border-radius:3px"></div>
+   <img src="public/images/felix.jpg" alt="Felix Blume (Kollegah)" style="position:relative;width:100%;height:560px;object-fit:cover;object-position:50% 22%;border-radius:3px;display:block;filter:grayscale(.15) contrast(1.04)">
+   <div style="position:absolute;left:18px;bottom:18px;z-index:2;background:rgba(14,14,15,.82);backdrop-filter:blur(6px);padding:12px 16px;border-radius:2px;border-left:3px solid #F1E10F">
+    <div style="font-weight:800;font-size:15px">Felix Blume · Kollegah</div>
+    <div style="font-size:12.5px;color:rgba(244,243,238,.6)">Projektförderer</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="mission" class="sz-sec" style="padding:110px 28px;border-top:1px solid rgba(255,255,255,.06);scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:18px">Unsere Mission</div>
+  <div class="sz-two" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start">
+   <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:52px;line-height:1;text-transform:uppercase">Warum dieses<br>Projekt?</h2>
+   <div>
+    <p style="font-size:17px;line-height:1.7;color:rgba(244,243,238,.74);margin-bottom:22px">Jugendliche stehen heute vor großen Herausforderungen: Mobbing, Gewalt, Drogenkonsum, übermäßiger Medienkonsum, fehlende Orientierung und falsche Vorbilder.</p>
+    <p style="font-size:17px;line-height:1.7;color:rgba(244,243,238,.74);margin-bottom:26px"><strong style="color:#F4F3EE">Stabile Zukunft</strong> ist genau dafür da, diesen Entwicklungen aktiv entgegenzuwirken – mit Sport, klaren Werten und echter Begleitung.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:9px">
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Mobbing</span>
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Gewalt</span>
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Drogenkonsum</span>
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Medienkonsum</span>
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Fehlende Orientierung</span>
+     <span style="border:1px solid rgba(255,255,255,.16);color:rgba(244,243,238,.7);font-size:13px;font-weight:600;padding:7px 14px;border-radius:100px">Falsche Vorbilder</span>
+    </div>
+   </div>
+  </div>
+  <div style="margin-top:64px;border-top:1px solid rgba(255,255,255,.08);padding-top:48px">
+   <p style="font-family:'Anton',sans-serif;font-weight:400;font-size:38px;line-height:1.2;max-width:900px;text-transform:uppercase">Sport ist unser Werkzeug – für <span style="color:#F1E10F">Fokus</span>, <span style="color:#F1E10F">Disziplin</span> und <span style="color:#F1E10F">Selbstvertrauen</span>.</p>
+  </div>
+ </div>
+</section>
+
+<section id="programm" class="sz-sec" style="padding:110px 28px;background:#141416;border-top:1px solid rgba(255,255,255,.06);scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:14px">Das Programm</div>
+  <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:52px;line-height:1;text-transform:uppercase;margin-bottom:48px">Was wir machen</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px">
+   <div style="background:#0E0E0F;border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:30px 26px">
+    <div style="font-family:'Anton',sans-serif;color:#F1E10F;font-size:34px;margin-bottom:16px">01</div>
+    <div style="font-size:17px;font-weight:700;line-height:1.4">Sportchallenges für Jugendliche</div>
+   </div>
+   <div style="background:#0E0E0F;border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:30px 26px">
+    <div style="font-family:'Anton',sans-serif;color:#F1E10F;font-size:34px;margin-bottom:16px">02</div>
+    <div style="font-size:17px;font-weight:700;line-height:1.4">Enge Zusammenarbeit mit Verantwortlichen</div>
+    <div style="font-size:13.5px;color:rgba(244,243,238,.55);margin-top:8px">Betreuende, Pädagogen, Trainer</div>
+   </div>
+   <div style="background:#0E0E0F;border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:30px 26px">
+    <div style="font-family:'Anton',sans-serif;color:#F1E10F;font-size:34px;margin-bottom:16px">03</div>
+    <div style="font-size:17px;font-weight:700;line-height:1.4">Regelmäßige Besuche mit dem Projekt-Van in Gruppen & Schulen</div>
+   </div>
+   <div style="background:#0E0E0F;border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:30px 26px">
+    <div style="font-family:'Anton',sans-serif;color:#F1E10F;font-size:34px;margin-bottom:16px">04</div>
+    <div style="font-size:17px;font-weight:700;line-height:1.4">Motivation, Orientierung & persönliche Entwicklung</div>
+   </div>
+   <div style="background:#0E0E0F;border:1px solid rgba(255,255,255,.08);border-radius:3px;padding:30px 26px">
+    <div style="font-family:'Anton',sans-serif;color:#F1E10F;font-size:34px;margin-bottom:16px">05</div>
+    <div style="font-size:17px;font-weight:700;line-height:1.4">Auszeichnung besonderer Leistungen nach 6 Monaten</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="mitmachen" class="sz-sec" style="padding:110px 28px;border-top:1px solid rgba(255,255,255,.06);scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:14px">Mitmachen</div>
+  <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:52px;line-height:1;text-transform:uppercase;margin-bottom:18px">Wie das Projekt läuft</h2>
+  <p style="font-size:17px;color:rgba(244,243,238,.66);max-width:640px;margin-bottom:46px">Am Projekt Stabile Zukunft kannst du auf zwei Arten teilnehmen.</p>
+  <div class="sz-two" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+   <div class="sz-mcard" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:38px 34px;transition:transform .25s,border-color .25s">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.2em;color:#F1E10F;text-transform:uppercase;margin-bottom:14px">01 · Organisation</div>
+    <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;margin-bottom:16px">Als Kooperationspartner</h3>
+    <p style="font-size:15px;line-height:1.65;color:rgba(244,243,238,.66);margin-bottom:14px">Für Schulen, Vereine, Wohngruppen, Jugendzentren und alle Einrichtungen, die mit Jugendlichen arbeiten. Deutschlandweit.</p>
+    <p style="font-size:15px;line-height:1.65;color:rgba(244,243,238,.66);margin-bottom:22px">Gemeinsam begleiten wir die Jugendlichen über sechs Monate. Besonders engagierte Jugendliche werden ausgezeichnet und zum Inspiration Day mit Kollegah eingeladen.</p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px">
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>Disziplin, Verantwortung, Zuverlässigkeit</li>
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>Auszeichnungen und hochwertige Preise</li>
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>Inspiration Day mit Kollegah</li>
+    </ul>
+    <a class="sz-btn" href="#form-coop" style="display:inline-block;background:#F1E10F;color:#0E0E0F;font-weight:800;text-transform:uppercase;font-size:13.5px;letter-spacing:.02em;padding:14px 26px;border-radius:2px">Jetzt anmelden</a>
+   </div>
+   <div class="sz-mcard" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:38px 34px;transition:transform .25s,border-color .25s">
+    <div style="font-size:12px;font-weight:800;letter-spacing:.2em;color:#F1E10F;text-transform:uppercase;margin-bottom:14px">02 · Einzelperson</div>
+    <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:30px;text-transform:uppercase;margin-bottom:6px">Als Einzelperson</h3>
+    <div style="font-size:13.5px;font-weight:700;color:#F1E10F;margin-bottom:16px">MMA & Fitness Training in Mönchengladbach</div>
+    <p style="font-size:15px;line-height:1.65;color:rgba(244,243,238,.66);margin-bottom:22px">Jugendliche zwischen 12 und 18 Jahren können direkt an unserem MMA- und Fitness-Training teilnehmen. Trainiere gemeinsam mit anderen Jugendlichen, nimm an Sport-Challenges teil und entwickle dich sportlich und persönlich weiter.</p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px">
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>Alter 12 – 18 Jahre</li>
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>MMA- & Fitness-Training</li>
+     <li style="display:flex;gap:12px;font-size:15px;font-weight:500"><span style="color:#F1E10F;font-weight:800">→</span>Sport-Challenges & Entwicklung</li>
+    </ul>
+    <a class="sz-btn" href="#form-indiv" style="display:inline-block;background:#F1E10F;color:#0E0E0F;font-weight:800;text-transform:uppercase;font-size:13.5px;letter-spacing:.02em;padding:14px 26px;border-radius:2px">Jetzt anmelden</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="inspiration" style="padding:96px 28px;background:#F1E10F;color:#0E0E0F;scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto">
+  <div class="sz-two" style="display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center">
+   <div>
+    <div style="font-size:12.5px;font-weight:800;letter-spacing:.28em;text-transform:uppercase;margin-bottom:16px;opacity:.7">Das Highlight</div>
+    <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:64px;line-height:.92;text-transform:uppercase;margin-bottom:22px">Inspiration<br>Day</h2>
+    <p style="font-size:17px;line-height:1.65;font-weight:500;max-width:440px">Nach jedem 6-Monats-Zeitraum treffen sich ausgewählte Jugendliche aus verschiedenen Gruppen zu einem Inspiration Day. Ein Tag, der inspiriert – und nachhaltig wirkt.</p>
+   </div>
+   <div style="display:flex;flex-direction:column;gap:0">
+    <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(14,14,15,.22)"><span style="font-family:'Anton',sans-serif;font-size:20px;min-width:34px">01</span><span style="font-size:17px;font-weight:600;padding-top:2px">Motivation & Austausch</span></div>
+    <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(14,14,15,.22)"><span style="font-family:'Anton',sans-serif;font-size:20px;min-width:34px">02</span><span style="font-size:17px;font-weight:600;padding-top:2px">Auszeichnung mit hochwertigen Preisen</span></div>
+    <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(14,14,15,.22)"><span style="font-family:'Anton',sans-serif;font-size:20px;min-width:34px">03</span><span style="font-size:17px;font-weight:600;padding-top:2px">Regelmäßige Besuche mit dem Projekt-Van</span></div>
+    <div style="display:flex;gap:16px;padding:18px 0;border-top:1px solid rgba(14,14,15,.22);border-bottom:1px solid rgba(14,14,15,.22)"><span style="font-family:'Anton',sans-serif;font-size:20px;min-width:34px">04</span><span style="font-size:17px;font-weight:600;padding-top:2px">Begegnung & Gespräch mit Kollegah</span></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="team" class="sz-sec" style="padding:110px 28px;border-top:1px solid rgba(255,255,255,.06);scroll-margin-top:74px">
+ <div style="max-width:1240px;margin:0 auto">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:14px">Stabile Zukunft</div>
+  <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:52px;line-height:1;text-transform:uppercase;margin-bottom:48px">Das Team</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px;align-items:start">
+   <sc-for list="{{ team }}" as="m" hint-placeholder-count="7">
+    <div class="sz-tcard" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:4px;overflow:hidden;display:flex;flex-direction:column">
+     <div style="position:relative;width:100%;aspect-ratio:4/5;overflow:hidden;background:#0E0E0F">
+      <img src="{{ m.img }}" alt="{{ m.name }}" style="width:100%;height:100%;object-fit:cover;object-position:50% 28%;display:block">
+     </div>
+     <div style="padding:24px 24px 28px;display:flex;flex-direction:column;flex:1">
+      <div style="font-family:'Anton',sans-serif;font-weight:400;font-size:23px;text-transform:uppercase;line-height:1.05;margin-bottom:6px">{{ m.name }}</div>
+      <div style="font-size:12.5px;font-weight:700;letter-spacing:.04em;color:#F1E10F;text-transform:uppercase;margin-bottom:16px">{{ m.role }}</div>
+      <div style="{{ m.bioStyle }}">{{ m.bio }}</div>
+      <sc-if value="{{ m.showToggle }}" hint-placeholder-val="{{ true }}">
+       <button onClick="{{ m.toggle }}" style="margin-top:14px;align-self:flex-start;background:transparent;border:none;color:#F1E10F;font-weight:700;font-size:13px;cursor:pointer;padding:0;display:inline-flex;align-items:center;gap:6px">{{ m.toggleLabel }}</button>
+      </sc-if>
+     </div>
+    </div>
+   </sc-for>
+  </div>
+ </div>
+</section>
+
+<section id="kontakt" class="sz-sec" style="padding:110px 28px;background:#141416;border-top:1px solid rgba(255,255,255,.06);scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto;text-align:center">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:16px">Sei dabei</div>
+  <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:60px;line-height:.95;text-transform:uppercase;margin-bottom:18px">Teil der Zukunft<br>werden.</h2>
+  <p style="font-size:18px;color:rgba(244,243,238,.66);max-width:520px;margin:0 auto 40px">Sei cool. Sei dabei. Melde dich jetzt an und werde Teil von Stabile Zukunft.</p>
+  <div class="sz-two" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:760px;margin:0 auto">
+   <a class="sz-mcard" href="mailto:stabilezukunft@gmail.com" style="background:#0E0E0F;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:26px 20px;transition:transform .25s,border-color .25s">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:rgba(244,243,238,.5);text-transform:uppercase;margin-bottom:8px">E-Mail</div>
+    <div style="font-weight:700;font-size:14.5px;word-break:break-word">stabilezukunft@gmail.com</div>
+   </a>
+   <a class="sz-mcard" href="https://instagram.com/stabile_zukunft" target="_blank" style="background:#0E0E0F;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:26px 20px;transition:transform .25s,border-color .25s">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:rgba(244,243,238,.5);text-transform:uppercase;margin-bottom:8px">Instagram</div>
+    <div style="font-weight:700;font-size:14.5px">@stabile_zukunft</div>
+   </a>
+   <a class="sz-mcard" href="https://tiktok.com/@stabile_zukunft" target="_blank" style="background:#0E0E0F;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:26px 20px;transition:transform .25s,border-color .25s">
+    <div style="font-size:11px;font-weight:800;letter-spacing:.16em;color:rgba(244,243,238,.5);text-transform:uppercase;margin-bottom:8px">TikTok</div>
+    <div style="font-weight:700;font-size:14.5px">@stabile_zukunft</div>
+   </a>
+  </div>
+ </div>
+</section>
+
+<section id="anmelden" class="sz-sec" style="padding:110px 28px;scroll-margin-top:74px">
+ <div style="max-width:1180px;margin:0 auto">
+  <div style="color:#F1E10F;font-weight:800;letter-spacing:.28em;font-size:12.5px;text-transform:uppercase;margin-bottom:14px">Anmeldung</div>
+  <h2 style="font-family:'Anton',sans-serif;font-weight:400;font-size:48px;line-height:1;text-transform:uppercase;margin-bottom:44px">Jetzt anmelden</h2>
+  <div class="sz-forms" style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+
+   <form id="form-coop" onSubmit="{{ onCoopSubmit }}" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:36px 32px;scroll-margin-top:90px">
+    <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase;margin-bottom:24px">Kooperationspartner werden</h3>
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Art der Gruppe</label>
+    <select name="gruppe" value="{{ coop.gruppe }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+     <option value="">Wähle eine Option</option>
+     <option>Schule</option><option>Verein</option><option>Jugendgruppe</option><option>Trainer</option><option>Wohngruppe</option><option>andere Institution</option>
+    </select>
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Name des Verantwortlichen *</label>
+    <input name="name" value="{{ coop.name }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+     <div><label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Stadt</label><input name="stadt" value="{{ coop.stadt }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s"></div>
+     <div><label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Straße</label><input name="strasse" value="{{ coop.strasse }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s"></div>
+    </div>
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">E-Mail-Adresse *</label>
+    <input name="email" type="email" value="{{ coop.email }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Webseite oder Instagram</label>
+    <input name="web" value="{{ coop.web }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Information zur Gruppe</label>
+    <textarea name="info" value="{{ coop.info }}" onChange="{{ onCoopChange }}" rows="3" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;resize:vertical;transition:border-color .2s"></textarea>
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Bitte löse die Aufgabe: 29 − 11 = ?</label>
+    <input name="captcha" value="{{ coop.captcha }}" onChange="{{ onCoopChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.5;color:rgba(244,243,238,.62);margin-bottom:20px;cursor:pointer"><input name="consent" type="checkbox" checked="{{ coop.consent }}" onChange="{{ onCoopChange }}" style="margin-top:3px;width:17px;height:17px;accent-color:#F1E10F;flex-shrink:0">Ich habe die Datenschutzerklärung zur Kenntnis genommen und stimme zu, dass meine Angaben elektronisch erhoben und gespeichert werden.</label>
+    <button type="submit" class="sz-btn" style="width:100%;background:#F1E10F;color:#0E0E0F;font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:14.5px;padding:15px;border:none;border-radius:2px;cursor:pointer">Absenden</button>
+    <sc-if value="{{ coopStatus }}" hint-placeholder-val="">
+     <div style="margin-top:14px;font-size:13.5px;font-weight:600;color:{{ coopStatusColor }}">{{ coopStatus }}</div>
+    </sc-if>
+   </form>
+
+   <form id="form-indiv" onSubmit="{{ onIndivSubmit }}" style="background:#141416;border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:36px 32px;scroll-margin-top:90px;align-self:start">
+    <h3 style="font-family:'Anton',sans-serif;font-weight:400;font-size:26px;text-transform:uppercase;margin-bottom:24px">Anmeldung als Einzelperson</h3>
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Name *</label>
+    <input name="name" value="{{ indiv.name }}" onChange="{{ onIndivChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Alter *</label>
+    <input name="alter" value="{{ indiv.alter }}" onChange="{{ onIndivChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">E-Mail-Adresse *</label>
+    <input name="email" type="email" value="{{ indiv.email }}" onChange="{{ onIndivChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Namen der Erziehungsberechtigten</label>
+    <input name="eltern" value="{{ indiv.eltern }}" onChange="{{ onIndivChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:block;font-size:13px;font-weight:600;color:rgba(244,243,238,.7);margin-bottom:7px">Bitte löse die Aufgabe: 24 − 5 = ?</label>
+    <input name="captcha" value="{{ indiv.captcha }}" onChange="{{ onIndivChange }}" class="sz-field" style="width:100%;background:#0E0E0F;border:1px solid rgba(255,255,255,.14);border-radius:2px;color:#F4F3EE;padding:13px 14px;font-size:15px;margin-bottom:18px;transition:border-color .2s">
+    <label style="display:flex;gap:11px;align-items:flex-start;font-size:13px;line-height:1.5;color:rgba(244,243,238,.62);margin-bottom:20px;cursor:pointer"><input name="consent" type="checkbox" checked="{{ indiv.consent }}" onChange="{{ onIndivChange }}" style="margin-top:3px;width:17px;height:17px;accent-color:#F1E10F;flex-shrink:0">Ich habe die Datenschutzerklärung zur Kenntnis genommen und stimme zu, dass meine Angaben elektronisch erhoben und gespeichert werden.</label>
+    <button type="submit" class="sz-btn" style="width:100%;background:#F1E10F;color:#0E0E0F;font-weight:800;text-transform:uppercase;letter-spacing:.03em;font-size:14.5px;padding:15px;border:none;border-radius:2px;cursor:pointer">Absenden</button>
+    <sc-if value="{{ indivStatus }}" hint-placeholder-val="">
+     <div style="margin-top:14px;font-size:13.5px;font-weight:600;color:{{ indivStatusColor }}">{{ indivStatus }}</div>
+    </sc-if>
+   </form>
+
+  </div>
+ </div>
+</section>
+
+<footer style="background:#0A0A0B;border-top:1px solid rgba(255,255,255,.08);padding:64px 28px 32px">
+ <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px">
+  <div>
+   <img src="public/images/logo-trim.png" alt="Stabile Zukunft" style="height:42px;margin-bottom:20px">
+   <div style="font-weight:800;font-size:15px;margin-bottom:8px">Intena Humanity e.V.</div>
+   <div style="font-size:14px;line-height:1.7;color:rgba(244,243,238,.6)">Erzbergerstraße 197, 41065 Mönchengladbach<br>0163 394 18 83<br><a class="sz-link" href="mailto:info@intenahumanity.de" style="transition:color .2s">info@intenahumanity.de</a></div>
+   <div style="margin-top:18px;font-size:13px;color:rgba(244,243,238,.5)"><strong style="color:rgba(244,243,238,.75)">Sprechzeiten</strong><br>Mo. – Do.: 12:00 – 18:00 Uhr<br>Samstag: 9:00 – 13:30 Uhr</div>
+  </div>
+  <div>
+   <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,243,238,.45);margin-bottom:16px">Navigation</div>
+   <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:rgba(244,243,238,.66)">
+    <a class="sz-link" href="#mission" style="transition:color .2s">Über Uns</a>
+    <a class="sz-link" href="#programm" style="transition:color .2s">Projekte</a>
+    <a class="sz-link" href="#mitmachen" style="transition:color .2s">Ehrenamt</a>
+    <a class="sz-link" href="#inspiration" style="transition:color .2s">Unsere Initiative</a>
+    <a class="sz-link" href="#anmelden" style="transition:color .2s">Mitglied werden</a>
+    <a class="sz-link" href="#kontakt" style="transition:color .2s">Kontakt</a>
+   </div>
+  </div>
+  <div>
+   <div style="font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(244,243,238,.45);margin-bottom:16px">Rechtliches</div>
+   <div style="display:flex;flex-direction:column;gap:11px;font-size:14px;color:rgba(244,243,238,.66)">
+    <a class="sz-link" href="#" style="transition:color .2s">Impressum</a>
+    <a class="sz-link" href="#" style="transition:color .2s">Datenschutz</a>
+    <a class="sz-link" href="#" style="transition:color .2s">Privatsphäre-Einstellungen</a>
+    <a class="sz-link" href="#" style="transition:color .2s">Einwilligungen widerrufen</a>
+   </div>
+  </div>
+ </div>
+ <div style="max-width:1180px;margin:48px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);font-size:13px;color:rgba(244,243,238,.4)">© Copyright 2025 Intena Humanity</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    menuOpen: false,
+    expanded: {},
+    coop: { gruppe:'', name:'', stadt:'', strasse:'', email:'', web:'', info:'', captcha:'', consent:false },
+    indiv: { name:'', alter:'', email:'', eltern:'', captcha:'', consent:false },
+    coopStatus: '', coopOk: false,
+    indivStatus: '', indivOk: false,
+  };
+
+  members = [
+    { key:'felix', name:'Felix Blume (Kollegah)', role:'Projektförderer', img:'public/images/felix.jpg',
+      bio:'Förderer des Projekts Stabile Zukunft.' },
+    { key:'malik', name:'Mark Malik Muturi', role:'Projektleitung', img:'public/images/malik.webp',
+      bio:'Ich glaube fest daran, dass jede positive Veränderung in unserer Gesellschaft bei den Jüngsten beginnt – bei den Kindern und Jugendlichen. Sie brauchen Menschen, die an sie glauben, sie begleiten und ihnen Mut machen, ihren eigenen Weg zu gehen. Diese Überzeugung ist seit vielen Jahren mein Antrieb.\n\nSeit über neun Jahren arbeite ich mit großer Leidenschaft mit Kindern und Jugendlichen und durfte mehr als 2.500 junge Menschen in ihrer Entwicklung begleiten – in Kindergärten, Schulen, Jugendgruppen, Vereinen, Flüchtlingseinrichtungen und Wohngruppen, von der Arbeit mit stark traumatisierten Kindern bis hin zur Begleitung gewaltbereiter Jugendlicher.\n\nUm diesen jungen Menschen bestmöglich zu begegnen, habe ich mich über sieben Jahre fachlich und persönlich weitergebildet – u.a. in Pädagogik, Sport und Prävention. Mit „Stabile Zukunft" möchte ich Räume schaffen, in denen Kinder und Jugendliche Halt, Motivation und Zuversicht finden – hin zu einer respektvollen, selbstbewussten und wirklich stabilen Zukunft.\n\nQualifikationen: Staatlich anerkannter Erzieher und Bewegungspädagoge · Zertifizierter Athletik-, Personal- & Fitnesstrainer (A-Lizenz) · Anti-Aggressions- & Anti-Mobbing-Trainer · Übungsleiter C-Lizenz · Leistungssporttrainer für Kinder und Jugendliche.' },
+    { key:'melisa', name:'Melisa T.', role:'Angehende Psychologin & Kampfsporttrainerin', img:'public/images/melisa.jpg',
+      bio:'Mein Name ist Melisa und ich studiere Psychologie. Besonders interessiere ich mich für die Kriminalpsychologie, weil ich verstehen möchte, warum Menschen bestimmte Entscheidungen treffen und wie man dazu beitragen kann, dass unsere Gesellschaft langfristig sicherer wird.\n\nGerade deshalb finde ich es wichtig, Kinder und Jugendliche früh zu stärken, ihnen Orientierung zu geben und ihr Selbstvertrauen zu fördern. Neben meinem Studium begleitet mich Taekwondo seit über 13 Jahren. Mittlerweile trainiere ich auch Kinder und vermittle ihnen nicht nur Techniken, sondern auch Werte wie Respekt, Disziplin, Selbstvertrauen und Zusammenhalt.\n\nWenn du Lust hast, dich zu bewegen, etwas Neues zu lernen und stärker und selbstbewusster zu werden, bist du bei mir genau richtig.' },
+    { key:'tayfun', name:'Tayfun Tekgül', role:'Qualitätsmanagement', img:'public/images/tayfun.jpg',
+      bio:'Mein Name ist Tayfun. Sport kann Jugendlichen neue Wege zeigen und ihnen helfen, ihr Potenzial zu entdecken. Es macht mir große Freude, mit jungen Menschen zu arbeiten und zu sehen, wie sie durch Sport mehr Selbstvertrauen entwickeln und über sich hinauswachsen.\n\nMir ist wichtig, ihnen eine positive Umgebung zu bieten, in der sie Disziplin, Teamgeist und wichtige Werte fürs Leben lernen können. So haben sie die Chance, sich von negativen Einflüssen zu lösen und Schritt für Schritt in ein besseres Umfeld zu kommen. Menschen zu helfen begleitet mich auch in meinem Beruf als Krankenpfleger und ist für mich ein wichtiger Teil meines Lebens.' },
+    { key:'emre', name:'Emre Koluman', role:'Ernährungsberater & Mentalitätscoach', img:'public/images/emre.jpg',
+      bio:'Ich bin Emre Koluman, 26 Jahre alt, und mein Weg war alles andere als geradlinig. Nach außen betrachtet habe ich einen klassischen Lebenslauf: Schule, Ausbildung in der Chemieindustrie, ein sicherer Job und seit 2023 verheiratet. Doch hinter diesem Weg steckt eine Geschichte, die mich grundlegend geprägt hat.\n\nAb der achten Klasse veränderte sich alles. Ich geriet in ein Umfeld, das mir nicht guttat, suchte Anerkennung bei den falschen Menschen und traf Entscheidungen, die mich immer weiter von mir selbst entfernten. Bis zu dem Moment, in dem ich erkennen musste, dass es den Menschen um mich herum egal war, ob ich scheitere. Das war ein schmerzhafter, aber entscheidender Wendepunkt.\n\nIch habe mich bewusst entschieden, Verantwortung für mein Leben zu übernehmen. Ich habe bei null angefangen, mich Schritt für Schritt neu aufgebaut – und wurde sogar zweimal zum Schülersprecher gewählt. Während meiner Ausbildung bin ich zweimal durch meine Abschlussprüfung gefallen. In dieser Phase bin ich auf Persönlichkeitsentwicklung und den Stoizismus gestoßen. Diese Denkweise hat mich gerettet.\n\nIch habe gelernt, meine Situation zu akzeptieren statt dagegen anzukämpfen, Verantwortung zu übernehmen statt die Schuld bei anderen zu suchen, und meinen Fokus auf das zu legen, was ich kontrollieren kann. Ich habe die Prüfung bestanden – und noch wichtiger: Ich habe mich selbst verändert.\n\nMeine Botschaft an alle Kinder und Jugendliche: Egal, wo du gerade stehst, egal wie oft du gefallen bist – du hast immer die Möglichkeit, neu anzufangen. Nicht perfekt, aber bewusst. Mit Disziplin. Mit Klarheit. Denn am Ende entscheidet nicht das, was dir passiert, sondern die Entscheidung, die du daraus triffst.\n\nViel Erfolg auf deinem Weg. Ich bin STOLZ auf Dich. — Emre Koluman' },
+    { key:'shuayb', name:'Shuayb', role:'MMA Coach & Leistungssportler', img:'public/images/shuayb.jpg',
+      bio:'Mein Name ist Shuaib. Ich bin MMA-Kämpfer. Und wenn du das hier liest, dann bin ich vielleicht bald dein Coach. Früher habe ich Fußball gespielt und hatte große Träume. Ich wollte nie einfach nur mitlaufen – ich wollte etwas Besonderes erreichen.\n\nDer Weg dahin war nicht leicht. Es gab Zweifel, Rückschläge und Menschen, die sagten: „Mach was Sicheres." Aber ich habe verstanden: Realistisch sein bringt dich nicht an die Spitze. Disziplin schon. Irgendwann bin ich vom Fußball zum MMA gewechselt – nicht weil es einfacher, sondern weil es härter war. Dieser Sport hat mich geformt. Nicht nur körperlich, sondern mental.\n\nVielleicht kommst du von der Straße und denkst, das ist dein Weg. Aber ich sage dir eins: Du bist für mehr gemacht. Die Straße gibt dir kurzfristigen Respekt. Aber Disziplin gibt dir echte Stärke, echte Kontrolle, echte Zukunft.\n\nWenn du bei uns trainierst, trainierst du nicht nur Schläge oder Techniken. Du trainierst Respekt, Durchhaltevermögen, Selbstkontrolle und Charakter. Wenn du bereit bist zu arbeiten, bin ich bereit, dich zu pushen. Die Entscheidung liegt bei dir.' },
+    { key:'leon', name:'Leon Janitz', role:'Sportwissenschaftler', img:'public/images/leon.jpg',
+      bio:'Sport treibt mich seit meiner Kindheit an. Meine Passion führte mich zu vielen Sportarten – Fußball, Kampfsport, Fitness, American Football – und mündete schließlich im Sportstudium.\n\nMittlerweile kann ich auf über zehn Jahre Erfahrung im Training mit Menschen unterschiedlichen Alters zurückblicken. Aktuell bin ich hauptberuflich in einer Physiotherapie-Praxis tätig und unterstütze Menschen dabei, durch Bewegung ein gesünderes und leistungsfähigeres Leben zu führen.\n\nIm Projekt mit Felix Blume möchte ich Kindern und Jugendlichen eine Stütze sein, um die Vielfalt und Berufschancen des Sports besser zu verstehen.' },
+  ];
+
+  toggleMenu = () => this.setState(s => ({ menuOpen: !s.menuOpen }));
+  closeMenu = () => this.setState({ menuOpen: false });
+
+  toggleMember = (key) => this.setState(s => ({ expanded: { ...s.expanded, [key]: !s.expanded[key] } }));
+
+  onCoopChange = (e) => {
+    const t = e.target; const v = t.type === 'checkbox' ? t.checked : t.value;
+    this.setState(s => ({ coop: { ...s.coop, [t.name]: v } }));
+  };
+  onIndivChange = (e) => {
+    const t = e.target; const v = t.type === 'checkbox' ? t.checked : t.value;
+    this.setState(s => ({ indiv: { ...s.indiv, [t.name]: v } }));
+  };
+
+  onCoopSubmit = (e) => {
+    e.preventDefault();
+    const c = this.state.coop;
+    if (!c.name.trim()) return this.setState({ coopStatus: 'Bitte gib den Namen des Verantwortlichen an.', coopOk:false });
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email)) return this.setState({ coopStatus: 'Bitte gib eine gültige E-Mail-Adresse ein.', coopOk:false });
+    if (parseInt(c.captcha,10) !== 18) return this.setState({ coopStatus: 'Bitte löse die Rechenaufgabe korrekt (29 − 11).', coopOk:false });
+    if (!c.consent) return this.setState({ coopStatus: 'Bitte stimme der Datenschutzerklärung zu.', coopOk:false });
+    const body = `Art der Gruppe: ${c.gruppe}\nVerantwortliche/r: ${c.name}\nStadt: ${c.stadt}\nStraße: ${c.strasse}\nE-Mail: ${c.email}\nWebseite/Instagram: ${c.web}\n\nInformation zur Gruppe:\n${c.info}`;
+    window.location.href = `mailto:stabilezukunft@gmail.com?subject=${encodeURIComponent('Kooperationsanfrage – Stabile Zukunft')}&body=${encodeURIComponent(body)}`;
+    this.setState({ coopStatus: 'Danke! Dein E-Mail-Programm öffnet sich – bitte sende die vorbereitete Nachricht ab.', coopOk:true });
+  };
+
+  onIndivSubmit = (e) => {
+    e.preventDefault();
+    const c = this.state.indiv;
+    if (!c.name.trim()) return this.setState({ indivStatus: 'Bitte gib deinen Namen an.', indivOk:false });
+    if (!c.alter.trim()) return this.setState({ indivStatus: 'Bitte gib dein Alter an.', indivOk:false });
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.email)) return this.setState({ indivStatus: 'Bitte gib eine gültige E-Mail-Adresse ein.', indivOk:false });
+    if (parseInt(c.captcha,10) !== 19) return this.setState({ indivStatus: 'Bitte löse die Rechenaufgabe korrekt (24 − 5).', indivOk:false });
+    if (!c.consent) return this.setState({ indivStatus: 'Bitte stimme der Datenschutzerklärung zu.', indivOk:false });
+    const body = `Name: ${c.name}\nAlter: ${c.alter}\nE-Mail: ${c.email}\nErziehungsberechtigte: ${c.eltern}`;
+    window.location.href = `mailto:stabilezukunft@gmail.com?subject=${encodeURIComponent('Anmeldung Einzelperson – Stabile Zukunft')}&body=${encodeURIComponent(body)}`;
+    this.setState({ indivStatus: 'Danke! Dein E-Mail-Programm öffnet sich – bitte sende die vorbereitete Nachricht ab.', indivOk:true });
+  };
+
+  renderVals() {
+    const team = this.members.map(m => {
+      const exp = !!this.state.expanded[m.key];
+      const showToggle = m.bio.length > 180;
+      return {
+        ...m,
+        showToggle,
+        toggle: () => this.toggleMember(m.key),
+        toggleLabel: exp ? 'Weniger anzeigen' : 'Mehr anzeigen',
+        bioStyle: {
+          whiteSpace: 'pre-line',
+          fontSize: '14px',
+          lineHeight: 1.65,
+          color: 'rgba(244,243,238,0.6)',
+          overflow: 'hidden',
+          display: exp ? 'block' : '-webkit-box',
+          WebkitLineClamp: exp ? 'unset' : 4,
+          WebkitBoxOrient: 'vertical',
+        },
+      };
+    });
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: this.toggleMenu,
+      closeMenu: this.closeMenu,
+      team,
+      coop: this.state.coop,
+      indiv: this.state.indiv,
+      onCoopChange: this.onCoopChange,
+      onIndivChange: this.onIndivChange,
+      onCoopSubmit: this.onCoopSubmit,
+      onIndivSubmit: this.onIndivSubmit,
+      coopStatus: this.state.coopStatus,
+      indivStatus: this.state.indivStatus,
+      coopStatusColor: this.state.coopOk ? '#F1E10F' : '#ff8a8a',
+      indivStatusColor: this.state.indivOk ? '#F1E10F' : '#ff8a8a',
+    };
+  }
+}
+</script>
+</body>
+</html>
